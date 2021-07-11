@@ -64,13 +64,12 @@ public class RouletteView extends View {
         for (int i=0; i<split; i++) {
             paint.setColor(Color.argb(255,0,0,255/split*i));
             RectF oval = new RectF(cx-r, cy-r, cx+r, cy+r);
-            canvas.drawArc(oval, -90+direction+angle*i, angle, true, paint);
-            float mid = (direction + angle*i + angle/2) * (float) Math.PI / 180;
+            canvas.drawArc(oval, -90-direction+angle*i, angle, true, paint);
+            float mid = (-direction + angle*i + angle/2) * (float) Math.PI / 180;
             float x = cx + r / 2 * (float) Math.sin(mid);
             float y = cy - r / 2 * (float) Math.cos(mid);
             paint.setColor(Color.argb(255, 255, 255, 255));
             paint.setTextSize(50);
-            // canvas.drawText(Integer.toString(i+1), x, y, paint);
             canvas.drawText(label.get(i), x, y, paint);
         }
     }

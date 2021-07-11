@@ -36,7 +36,7 @@
         android:layout_marginRight="104dp"
         android:layout_marginBottom="8dp"
         android:onClick="onClickScreenShot"
-        android:text="Photo"
+        android:text="Stop"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

@@ -96,11 +96,8 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         timestamp = event.timestamp;
         direction_t += data * dt;
         direction = direction_t * 180 / (float)Math.PI;
-        // Log.d(TAG, Float.toString(direction));
-        if (data < -0.01 || 0.01 < data) {
-            rouletteView.setDirection(direction);
-        }
-        Log.d(TAG, Float.toString(data));
+        Log.d(TAG, Float.toString(direction));
+        rouletteView.setDirection(direction);
     }
 
     @Override
@@ -115,11 +112,9 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     @SuppressLint("NonConstantResourceId")
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.menu_label:
-                Intent intent = new Intent(MainActivity.this, EditActivity.class);
-                startActivityForResult(intent, REQ_EDIT);
-                break;
+        if (item.getItemId() == R.id.menu_label) {
+            Intent intent = new Intent(MainActivity.this, EditActivity.class);
+            startActivityForResult(intent, REQ_EDIT);
         }
         return true;
     }
