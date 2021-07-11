@@ -2,26 +2,43 @@ package jp.ac.titech.itpro.sdl.roulette;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
+import android.content.Intent;
+import android.graphics.Bitmap;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import android.graphics.Bitmap;
+import java.util.HashMap;
+import java.util.Map;
 
 
 public class MainActivity extends AppCompatActivity implements SensorEventListener {
     private final static String TAG = MainActivity.class.getSimpleName();
 
+    private final static String EXTRA1 = "label1";
+    private final static String EXTRA2 = "label2";
+    private final static String EXTRA3 = "label3";
+    private final static String EXTRA4 = "label4";
+    private final static String EXTRA5 = "label5";
+    private final static String EXTRA6 = "label6";
+    private final static String EXTRA7 = "label7";
+    private final static String EXTRA8 = "label8";
+    private final static String EXTRA9 = "label9";
+    private final static String EXTRA10 = "label10";
+
+    private final static int REQ_EDIT = 1234;
+
     private RouletteView rouletteView;
     private ImageView photoView;
-    // private Button resetButton;
 
     private SensorManager manager;
     private Sensor sensor;
@@ -30,6 +47,9 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     private float direction = 0;
     private float direction_t = 0;
     private int split = 6;
+    private int splitMax = 10;
+    private int splitMin = 4;
+    private Map<Integer, String> label = new HashMap<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +58,10 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
         rouletteView = findViewById(R.id.roulette_view);
         photoView = findViewById(R.id.photo_view);
-        // resetButton = findViewById(R.id.reset_button);
+
+        for(int i=0; i<10; i++) {
+            label.put(i, Integer.toString(i+1));
+        }
 
         manager = (SensorManager) getSystemService(SENSOR_SERVICE);
         if (manager == null) {
@@ -83,11 +106,84 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     @Override
     public void onAccuracyChanged(Sensor sensor, int accuracy) {}
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main, menu);
+        return true;
+    }
+
+    @SuppressLint("NonConstantResourceId")
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.menu_label:
+                Intent intent = new Intent(MainActivity.this, EditActivity.class);
+                startActivityForResult(intent, REQ_EDIT);
+                break;
+        }
+        return true;
+    }
+
+    @Override
+    protected void onActivityResult(int reqCode, int resCode, Intent data) {
+        Log.d(TAG, "getResult");
+        super.onActivityResult(reqCode, resCode, data);
+        if (reqCode == REQ_EDIT &&  resCode == RESULT_OK) {
+            String new_label;
+
+            new_label = data.getStringExtra(EXTRA1);
+            if (new_label != null && !new_label.isEmpty()) {
+                label.put(0, new_label);
+            }
+            new_label = data.getStringExtra(EXTRA2);
+            if (new_label != null && !new_label.isEmpty()) {
+                label.put(1, new_label);
+            }
+            new_label = data.getStringExtra(EXTRA3);
+            if (new_label != null && !new_label.isEmpty()) {
+                label.put(2, new_label);
+            }
+            new_label = data.getStringExtra(EXTRA4);
+            if (new_label != null && !new_label.isEmpty()) {
+                label.put(3, new_label);
+            }
+            new_label = data.getStringExtra(EXTRA5);
+            if (new_label != null && !new_label.isEmpty()) {
+                label.put(4, new_label);
+            }
+            new_label = data.getStringExtra(EXTRA6);
+            if (new_label != null && !new_label.isEmpty()) {
+                label.put(5, new_label);
+            }
+            new_label = data.getStringExtra(EXTRA7);
+            if (new_label != null && !new_label.isEmpty()) {
+                label.put(6, new_label);
+            }
+            new_label = data.getStringExtra(EXTRA8);
+            if (new_label != null && !new_label.isEmpty()) {
+                label.put(7, new_label);
+            }
+            new_label = data.getStringExtra(EXTRA9);
+            if (new_label != null && !new_label.isEmpty()) {
+                label.put(8, new_label);
+            }
+            new_label = data.getStringExtra(EXTRA10);
+            if (new_label != null && !new_label.isEmpty()) {
+                label.put(9, new_label);
+            }
+            rouletteView.setMap(label);
+        }
+    }
+
     public void onClickReset(View v) {
         direction = 0;
         split = 6;
+        for(int i=0; i<10; i++) {
+            label.put(i, Integer.toString(i+1));
+        }
         rouletteView.setDirection(direction);
         rouletteView.setSplit(split);
+        rouletteView.setMap(label);
         rouletteView.setVisibility(View.VISIBLE);
         photoView.setVisibility(View.INVISIBLE);
     }
@@ -106,19 +202,29 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
     public void onClickPlus(View v) {
         split++;
-        if (split > 10) {
-            Toast.makeText(this, "Max 10", Toast.LENGTH_LONG).show();
-            split = 10;
+        if (split > splitMax) {
+            Toast.makeText(this, "Max " + splitMax, Toast.LENGTH_LONG).show();
+            split = splitMax;
         }
         rouletteView.setSplit(split);
+
+        for(int i=0; i<10; i++) {
+            label.put(i, Integer.toString(i+1));
+        }
+        rouletteView.setMap(label);
     }
 
     public void onClickMinus(View v) {
         split--;
-        if (split < 4) {
-            Toast.makeText(this, "Min 4", Toast.LENGTH_LONG).show();
-            split = 4;
+        if (split < splitMin) {
+            Toast.makeText(this, "Min " + splitMin, Toast.LENGTH_LONG).show();
+            split = splitMin;
         }
         rouletteView.setSplit(split);
+
+        for(int i=0; i<10; i++) {
+            label.put(i, Integer.toString(i+1));
+        }
+        rouletteView.setMap(label);
     }
 }

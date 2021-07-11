@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".EditActivity">
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:text="Edit Label"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/edit1" />
+
+    <TextView
+        android:id="@+id/title1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:text="1"
+        android:textSize="24sp"
+        app:layout_constraintTop_toTopOf="@id/edit1"
+        app:layout_constraintEnd_toStartOf="@id/edit1" />
+
+    <EditText
+        android:id="@+id/edit1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:hint="Label1"
+        android:textSize="24sp"
+        app:layout_constraintTop_toBottomOf="@id/title"
+        app:layout_constraintStart_toEndOf="@id/title1" />
+
+    <TextView
+        android:id="@+id/title2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:text="2"
+        android:textSize="24sp"
+        app:layout_constraintTop_toTopOf="@id/edit2"
+        app:layout_constraintEnd_toStartOf="@id/edit2" />
+
+    <EditText
+        android:id="@+id/edit2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:hint="Label2"
+        android:textSize="24sp"
+        app:layout_constraintTop_toBottomOf="@id/edit1"
+        app:layout_constraintStart_toEndOf="@id/title2" />
+
+    <TextView
+        android:id="@+id/title3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:text="3"
+        android:textSize="24sp"
+        app:layout_constraintTop_toTopOf="@id/edit3"
+        app:layout_constraintEnd_toStartOf="@id/edit3" />
+
+    <EditText
+        android:id="@+id/edit3"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:hint="Label3"
+        android:textSize="24sp"
+        app:layout_constraintTop_toBottomOf="@id/edit2"
+        app:layout_constraintStart_toEndOf="@id/title3" />
+
+    <TextView
+        android:id="@+id/title4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:text="4"
+        android:textSize="24sp"
+        app:layout_constraintTop_toTopOf="@id/edit4"
+        app:layout_constraintEnd_toStartOf="@id/edit4" />
+
+    <EditText
+        android:id="@+id/edit4"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:hint="Label4"
+        android:textSize="24sp"
+        app:layout_constraintTop_toBottomOf="@id/edit3"
+        app:layout_constraintStart_toEndOf="@id/title4" />
+
+    <TextView
+        android:id="@+id/title5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:text="5"
+        android:textSize="24sp"
+        app:layout_constraintTop_toTopOf="@id/edit5"
+        app:layout_constraintEnd_toStartOf="@id/edit5" />
+
+    <EditText
+        android:id="@+id/edit5"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:hint="Label5"
+        android:textSize="24sp"
+        app:layout_constraintTop_toBottomOf="@id/edit4"
+        app:layout_constraintStart_toEndOf="@id/title5" />
+
+    <TextView
+        android:id="@+id/title6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:text="6"
+        android:textSize="24sp"
+        app:layout_constraintTop_toTopOf="@id/edit6"
+        app:layout_constraintStart_toEndOf="@id/edit1"
+        app:layout_constraintEnd_toStartOf="@id/edit6" />
+
+    <EditText
+        android:id="@+id/edit6"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:hint="Label6"
+        android:textSize="24sp"
+        app:layout_constraintTop_toBottomOf="@id/title"
+        app:layout_constraintStart_toEndOf="@id/title6" />
+
+    <TextView
+        android:id="@+id/title7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:text="7"
+        android:textSize="24sp"
+        app:layout_constraintTop_toTopOf="@id/edit7"
+        app:layout_constraintStart_toEndOf="@id/edit2"
+        app:layout_constraintEnd_toStartOf="@id/edit7" />
+
+    <EditText
+        android:id="@+id/edit7"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:hint="Label7"
+        android:textSize="24sp"
+        app:layout_constraintTop_toBottomOf="@id/edit6"
+        app:layout_constraintStart_toEndOf="@id/title7" />
+
+    <TextView
+        android:id="@+id/title8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:text="8"
+        android:textSize="24sp"
+        app:layout_constraintTop_toTopOf="@id/edit8"
+        app:layout_constraintStart_toEndOf="@id/edit3"
+        app:layout_constraintEnd_toStartOf="@id/edit8" />
+
+    <EditText
+        android:id="@+id/edit8"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:hint="Label8"
+        android:textSize="24sp"
+        app:layout_constraintTop_toBottomOf="@id/edit7"
+        app:layout_constraintStart_toEndOf="@id/title8" />
+
+    <TextView
+        android:id="@+id/title9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:text="9"
+        android:textSize="24sp"
+        app:layout_constraintTop_toTopOf="@id/edit9"
+        app:layout_constraintStart_toEndOf="@id/edit4"
+        app:layout_constraintEnd_toStartOf="@id/edit9" />
+
+    <EditText
+        android:id="@+id/edit9"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:hint="Label9"
+        android:textSize="24sp"
+        app:layout_constraintTop_toBottomOf="@id/edit8"
+        app:layout_constraintStart_toEndOf="@id/title9" />
+
+    <TextView
+        android:id="@+id/title10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:text="10"
+        android:textSize="24sp"
+        app:layout_constraintTop_toTopOf="@id/edit10"
+        app:layout_constraintStart_toEndOf="@id/edit5"
+        app:layout_constraintEnd_toStartOf="@id/edit10" />
+
+    <EditText
+        android:id="@+id/edit10"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:hint="Label10"
+        android:textSize="24sp"
+        app:layout_constraintTop_toBottomOf="@id/edit9"
+        app:layout_constraintStart_toEndOf="@id/title10" />
+
+    <Button
+        android:id="@+id/back_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:onClick="onClickBack"
+        android:text="Back"
+        android:textSize="24sp"
+        app:layout_constraintTop_toBottomOf="@id/edit10"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
