@@ -15,6 +15,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.HashMap;
@@ -39,6 +40,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
     private RouletteView rouletteView;
     private ImageView photoView;
+    private TextView resultTextView;
 
     private SensorManager manager;
     private Sensor sensor;
@@ -58,6 +60,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
         rouletteView = findViewById(R.id.roulette_view);
         photoView = findViewById(R.id.photo_view);
+        resultTextView = findViewById(R.id.result_text);
 
         for(int i=0; i<10; i++) {
             label.put(i, Integer.toString(i+1));
@@ -172,7 +175,6 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
     public void onClickReset(View v) {
         direction = 0;
-        split = 6;
         for(int i=0; i<10; i++) {
             label.put(i, Integer.toString(i+1));
         }
@@ -181,6 +183,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         rouletteView.setMap(label);
         rouletteView.setVisibility(View.VISIBLE);
         photoView.setVisibility(View.INVISIBLE);
+        resultTextView.setVisibility(View.INVISIBLE);
     }
 
     public void onClickScreenShot(View v) {
@@ -193,6 +196,12 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         photoView.setImageBitmap(screenshot);
         rouletteView.setVisibility(View.INVISIBLE);
         photoView.setVisibility(View.VISIBLE);
+
+        float direction_r = direction;
+        while (direction_r < 0) direction_r += 360;
+        int result_num = (int)((direction_r%360) / (360/split)) + 1;
+        resultTextView.setText(label.get(result_num-1) + " is chosen");
+        resultTextView.setVisibility(View.VISIBLE);
     }
 
     public void onClickPlus(View v) {
@@ -207,6 +216,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
             label.put(i, Integer.toString(i+1));
         }
         rouletteView.setMap(label);
+        resultTextView.setVisibility(View.INVISIBLE);
     }
 
     public void onClickMinus(View v) {
@@ -221,5 +231,6 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
             label.put(i, Integer.toString(i+1));
         }
         rouletteView.setMap(label);
+        resultTextView.setVisibility(View.INVISIBLE);
     }
 }
