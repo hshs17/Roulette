@@ -216,7 +216,6 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
             label.put(i, Integer.toString(i+1));
         }
         rouletteView.setMap(label);
-        resultTextView.setVisibility(View.INVISIBLE);
     }
 
     public void onClickMinus(View v) {
@@ -231,6 +230,5 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
             label.put(i, Integer.toString(i+1));
         }
         rouletteView.setMap(label);
-        resultTextView.setVisibility(View.INVISIBLE);
     }
 }
